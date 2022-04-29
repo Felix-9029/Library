@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.web.WebView?>
+
+<GridPane onKeyPressed="#keyEventHandler" minHeight="800.0" minWidth="1300.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.felix.library.GUI.WikiBooksControler">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="450.0" />
+        <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="270.0" />
+        <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="300.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="200.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+      <SplitPane dividerPositions="0.21223958333333334" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.columnSpan="2147483647" GridPane.rowSpan="2">
+        <items>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="450.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="270.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="300.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                    <GridPane GridPane.rowIndex="1">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints prefHeight="50.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Label focusTraversable="false" text="Suchbegriff:" />
+                            <TextField fx:id="tfSearchTermf" onKeyPressed="#tfSearchTermfKeyEventHandler" prefHeight="25.0" prefWidth="140.0" GridPane.columnIndex="1" />
+                            <Button fx:id="btnSearch" minWidth="110.0" mnemonicParsing="false" onAction="#onSearchButtonClick" prefWidth="110.0" text="Suchen" GridPane.columnIndex="2" />
+                        </children>
+                    </GridPane>
+                    <GridPane GridPane.rowIndex="2">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="80.0" minWidth="80.0" prefWidth="80.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" />
+                            <ColumnConstraints minWidth="110.0" prefWidth="110.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Label focusTraversable="false" text="Synonyme:" />
+                            <ListView fx:id="listSynonyms" onKeyPressed="#listSynonymsKeyEventHandler" onMouseClicked="#listSynonymsMouseDoubleClickEventHandler" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowSpan="2147483647" />
+                            <Button fx:id="btnSearchSynonym" minWidth="110.0" mnemonicParsing="false" onAction="#onSearchSynonymButtonClick" prefWidth="110.0" text="Suche Synonym" GridPane.columnIndex="2" />
+                        </children>
+                    </GridPane>
+                    <GridPane GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="250.0" prefWidth="250.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Label focusTraversable="false" text="Medien:" />
+                            <ListView fx:id="listMedia" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowSpan="2147483647" />
+                        </children>
+                    </GridPane>
+                    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Button fx:id="btnAdd" minWidth="110.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefWidth="110.0" text="Hinzufügen" />
+                            <MenuButton minWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="Sortieren" GridPane.columnIndex="2">
+                                <items>
+                                    <MenuItem fx:id="btnSortUp" mnemonicParsing="false" onAction="#onSortUpButtonClick" text="Aufwärts" />
+                                    <MenuItem fx:id="btnSortDown" mnemonicParsing="false" onAction="#onSortDownButtonClick" text="Abwärts" />
+                                </items>
+                            </MenuButton>
+                            <Button fx:id="btnDelete" minWidth="110.0" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefWidth="110.0" text="Löschen" GridPane.columnIndex="1" />
+                        </children>
+                    </GridPane>
+                    <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Button fx:id="btnLoad" minWidth="110.0" mnemonicParsing="false" onAction="#onLoadButtonClick" prefWidth="110.0" text="Laden" />
+                            <Button fx:id="btnSave" minWidth="110.0" mnemonicParsing="false" onAction="#onSaveButtonClick" prefWidth="110.0" text="Speichern" GridPane.columnIndex="1" />
+                            <MenuButton minWidth="110.0" mnemonicParsing="false" prefWidth="110.0" text="BibTex" GridPane.columnIndex="2">
+                                <items>
+                                    <MenuItem fx:id="btnExport" mnemonicParsing="false" onAction="#onExportButtonClick" text="Export" />
+                                    <MenuItem fx:id="btnImport" mnemonicParsing="false" onAction="#onImportButtonClick" text="Import" />
+                                </items>
+                            </MenuButton>
+                        </children>
+                    </GridPane>
+                    <MenuBar GridPane.columnSpan="2147483647">
+                        <menus>
+                            <Menu mnemonicParsing="false" text="?">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" onAction="#onMenuAboutClick" text="Über dieses Programm" />
+                                </items>
+                            </Menu>
+                        </menus>
+                    </MenuBar>
+                    <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="150.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Button fx:id="btnBack" minWidth="80.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefWidth="80.0" text="Zurück" />
+                            <ComboBox fx:id="boxHistory" maxWidth="1.7976931348623157E308" onMouseClicked="#onBoxHistoryValueClick" GridPane.columnIndex="1" />
+                            <Button fx:id="btnForward" minWidth="80.0" mnemonicParsing="false" onAction="#onForwardButtonClick" prefWidth="80.0" text="Vor" GridPane.columnIndex="2" />
+                        </children>
+                    </GridPane>
+               </children>
+            </GridPane>
+              <WebView fx:id="browser" focusTraversable="false" minHeight="100.0" minWidth="100.0" prefHeight="550.0" prefWidth="1050.0" />
+        </items>
+      </SplitPane>
+        <GridPane GridPane.columnSpan="2147483647" GridPane.rowIndex="2">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="125.0" minWidth="0.0" prefWidth="101.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
+            </columnConstraints>
+            <children>
+                <Label focusTraversable="false" text="Letzter Bearbeiter:" />
+                <Label fx:id="contributor" focusTraversable="false" GridPane.columnIndex="1" />
+                <Separator focusTraversable="false" orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="2" />
+                <Label focusTraversable="false" text="Letzte Änderung um:" GridPane.columnIndex="3" />
+                <Label fx:id="date" focusTraversable="false" GridPane.columnIndex="4" />
+                <Separator focusTraversable="false" orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="5" />
+                <Label focusTraversable="false" text="Regal:" GridPane.columnIndex="6" />
+                <Label fx:id="shelve" focusTraversable="false" GridPane.columnIndex="7" />
+            </children>
+            <rowConstraints>
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+    </children>
+</GridPane>
